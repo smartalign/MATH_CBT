@@ -1,0 +1,88 @@
+.listItem{
+  transition: all .1s ease-in;
+}
+
+.listItem:hover{ 
+    background:linear-gradient(to right,rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+}
+/* .listItemMenu{
+  padding: 0 !important;
+  margin: 0 !important;
+} */
+
+.MuiListItemText-primary { 
+  color: #cccccc;
+  padding: 10px;
+}
+
+.MuiListItemText-primary:hover{
+  color: white !important;
+}
+
+.nested .MuiListItemText-primary { 
+  color: #cccccc;
+  font-size: 0.9rem !important;
+}
+
+
+.list{
+  padding: 0px 5px !important;
+  padding-left: 1rem !important;
+}
+
+.logo_container{
+  background-color: rgb(255, 255, 255);
+  height: 4.7rem !important;
+}
+.logo_container img{
+  transform:  translate(-1.5rem, 0) scale(1.1);
+}
+
+
+/* this are mui default selectors  */
+.MuiDrawer-paper{
+background-color: pink;
+}
+
+.MuiCollapse-root {
+  transition: height 0.3s ease;
+}
+
+.MuiCollapse-root .MuiListItem-root{
+  width: 100%;
+  background-color: #22313f;
+  cursor: pointer;
+  border-bottom: 2px solid #1b2733;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.MuiCollapse-root .MuiListItem-root:hover{
+  background-color: #1c2833;
+
+}
+.MuiCollapse-root .MuiSvgIcon-root{
+  margin-left: 3.5rem;
+  /* margin-right: .5rem; */
+}
+
+
+.listItem > .MuiSvgIcon-root{
+  margin: 1rem;
+  color: white;
+}
+
+/* .MuiListItem-root{
+background-color: black;
+
+} */
+/* .MuiListItemIcon-root{
+
+}
+
+.MuiListItemText-root{
+
+}
+
+.MuiSvgIcon-root{
+
+} */

@@ -1,0 +1,35 @@
+.background2{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    /* background-color: rgb(220, 239, 255); */
+    background-color: var( --bs-gray-200);
+    z-index: -10000;
+}
+#background_design2{
+    width: 100%;
+    display: flex;
+    /* margin-top: 40vh; */
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: -1rem;
+
+    gap: 5rem;
+    animation: drop2 2s;
+}
+
+@keyframes drop2 {
+  0% {
+    transform: translate(0, 40%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.design2{
+    width: 7rem;
+    height: 25rem;
+    background:linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.6), white);
+}

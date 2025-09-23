@@ -1,0 +1,52 @@
+/* TextField wrapper styles */
+.dob-input .MuiOutlinedInput-root {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.dob-input .MuiOutlinedInput-root fieldset {
+  border-color: #ccc;
+}
+
+.dob-input .MuiOutlinedInput-root:hover fieldset {
+  border-color: #3f51b5; /* hover border color */
+}
+
+.dob-input .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #4caf50; /* focused border color */
+  border-width: 2px;
+}
+
+/* Label styles */
+.dob-input .MuiInputLabel-root {
+  color: #555;
+  font-weight: 500;
+}
+
+.dob-input .MuiInputLabel-root.Mui-focused {
+  color: #4caf50;
+}
+
+/* Helper text styles */
+.dob-input .MuiFormHelperText-root {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Calendar popup styles */
+.MuiPickersPopper-root .MuiPaper-root {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.MuiPickersDay-root {
+  font-weight: bold;
+}
+
+.MuiPickersDay-root.Mui-selected {
+  background-color: #4caf50 !important;
+}
+
+.MuiPickersDay-root:hover {
+  background-color: #e0e0e0 !important;
+}

@@ -1,0 +1,31 @@
+.custom-input-container {
+  /* margin-bottom: 16px; */
+  width: 45%;
+}
+
+.custom-input .MuiInputBase-root {
+  background-color: #f3f3f3; /* Background */
+  /* border-radius: 8px; Rounded corners */
+  padding: 3px 0;
+
+}
+
+.custom-input .MuiInputLabel-root {
+  color: #555; /* Label color */
+}
+
+.custom-input .MuiInputLabel-root.Mui-focused {
+  color: #1976d2; /* Label color when focused */
+}
+
+.custom-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #1976d2; /* Border color when focused */
+}
+
+.custom-input .MuiFormHelperText-root {
+  color: #888; /* Helper text color */
+}
+
+.custom-input .Mui-error {
+  color: red; /* Error color */
+}

@@ -1,0 +1,18 @@
+
+.users_padding{
+     /* width: 100%; */
+     position: relative;
+     height: 100vh;
+}
+
+.manageUsers{
+    width: var(--container-width-md);
+    /* height: fit-content; */
+    /* margin: 3rem; */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+    box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, .2);
+
+}

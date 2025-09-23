@@ -1,0 +1,135 @@
+.admin_padding{
+    /* background-color: var( --bs-gray-200); */
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.contents{
+    position: absolute;
+    top: 5rem;
+    width: 100% !important;
+    padding: 20px;
+    color: var( --bs-gray-700);
+}
+.page_welcome{
+    padding: 15px 2rem;
+    margin: 10px 0 30px;
+    color: white !important;
+    border-radius: var(--border-radius-3);
+    background:linear-gradient(#5c85aa , #253544);
+}
+.page_welcome h3{
+    color: white;
+}
+.page_components{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+.page_components h3{
+    color: var( --bs-gray-800);
+}
+.page_components-items{
+    min-height: 6rem;
+    width: 32%;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
+
+}
+
+.page_charts{
+    width: 100%;
+    background-color: white;
+    border-radius: var(--border-radius-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 4rem;
+}
+
+
+.page_charts-items{
+    /* min-height: 6rem; */
+    /* width: 32%; */
+    width: fit-content;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
+
+}
+.page_charts-items h2{
+    font-size: 1.5rem;
+}
+.border_bottom{
+    display: flex;
+    align-items: flex-end;
+    border-bottom:  1px solid silver;
+    padding-bottom: 1rem ;
+    margin-bottom: 1rem;
+}
+.frame{
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-content: center;
+    padding: 10px;
+    margin-right: 2rem;
+    border-radius: 50%;
+}
+.frame_bg-1{
+    background-color: rgba(255, 166, 0, 0.200);
+
+}
+.frame_bg-2{
+    background-color: rgba(0, 0, 255, 0.100);
+}
+.frame_bg-3{
+    background-color: rgba(0, 128, 0, 0.200);
+}
+.page_component-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status_span{
+    color: var(--bs-gray);
+    font-weight: normal;
+    /* word-spacing: 5px; */
+}
+.status{
+    /* font-size: 14px; */
+
+    font-weight: bold;
+}
+
+.page_navigation-li{
+    color: #000000;
+    font-weight: 500;
+}
+
+
+
+
+
+/* just testing the sticky position */
+/* remind me to researh on the practical applications of this */
+.test{
+    /* position: relative; */
+    max-height:5rem;
+    display: flex;
+    overflow-y: scroll;
+}
+.sticky_left{
+    /* height: 10rem; */
+    position: sticky;
+    top: 1rem;
+    height: 100%;
+    
+}
+.sticky_right{
+    /* position: sticky; */
+    height: 100%;
+
+}

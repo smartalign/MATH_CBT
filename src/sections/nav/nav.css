@@ -1,0 +1,38 @@
+.navbar {
+  position: fixed;
+  /* height: 60px; */
+  height: 4.7rem !important;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 1000;
+  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, .2);
+
+  /* margin-left: 200px; Offset for sidebar */
+}
+
+
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
+  align-items: center;
+}
+
+.profile-section {
+  display: flex;
+  /* width: 40%; */
+  margin-left: auto ;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40bpx;
+  border-radius: 50%;
+  object-fit: cover;
+}
