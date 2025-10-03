@@ -13,7 +13,8 @@
     width: var(--container-width-md);
     height: fit-content;
     border-radius: var(--border-radius-2);
-    padding: 3rem;
+    padding: 2rem;
+    padding-bottom: 0px;
     background-color: white;
 }
 .row{
@@ -21,11 +22,27 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-around;
+    align-items: flex-start;
     
 }
 
 .inpt{
     width: 45% !important;
+    /* height: 100%; */
+}
+.selectInput{
+    max-height: 4rem;
+    z-index: 1000;
+    border-radius: 5px;
+    
+    /* background-color: black; */
+}
+.select_order{
+    z-index: 999;
+}
+.selectInput:hover{
+   box-shadow: 0 0 0 .5px black;
+   border-radius: 5px;
 }
 
 .registration_btn{
@@ -35,4 +52,31 @@
 .registration_btn:hover{
     color: white;
     background:linear-gradient(blue, rgb(115, 115, 255));
+}
+
+.dob-input{
+    height: 3.5rem;
+}
+
+.dob-input .MuiFormHelperText-root {
+    color: red;
+}
+.MuiPickersDay-root.Mui-selected {
+  background-color: #4caf50 !important;
+}
+
+.row_action{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.reg_notice{
+    padding: 20px 30px;
+    color: grey;
+    border: 1px dashed red;
+    border-radius: var(--border-radius-2);
+    text-align: justify;
+}
+.reg_notice li{
+    list-style-type: disc;
 }

@@ -30,7 +30,8 @@
 /* Helper text styles */
 .dob-input .MuiFormHelperText-root {
   font-size: 13px;
-  color: #888;
+  /* color: #888; */
+  color: #ce0909;
 }
 
 /* Calendar popup styles */
