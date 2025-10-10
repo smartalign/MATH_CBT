@@ -3,6 +3,8 @@ import Background from './../../components/background';
 import { User, GraduationCap, LogIn, Lock, Eye, EyeClosed } from 'lucide-react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../../api.js"; // adjust path if needed
+
 
 const Login = () => {
     // const [name, setName] = useState('');
@@ -22,7 +24,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('http://localhost/CBT-MATH-PROJECT/backend/login.php', {
+        const res = await fetch(`${API_URL}/login.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

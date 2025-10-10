@@ -26,8 +26,10 @@ const App = () => {
         <Route path="/admin" element={<AdminDashboard />}>
           <Route index element={<AdminHome />} />
           {/* <Route path="users" element={<Users />} /> */}
-          <Route path="admin/register" element={<Registration />} />
-          <Route path="admin/manageUser" element={<ManageUsers />} />
+          <Route path="register" element={<Registration />} />
+          <Route path="register/:id" element={<Registration />} /> {/* ✅ Added this because i wanted to navigate with a specific id */}
+
+          <Route path="manageUser" element={<ManageUsers />} />
           {/* <Route path="settings" element={<Settings />} /> */}
         </Route>
 

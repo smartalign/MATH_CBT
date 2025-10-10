@@ -82,7 +82,7 @@ const Sidebar = () => {
             <Collapse in={openUser} className='listItemMenu' timeout="auto" unmountOnExit>
               <List component="div"  >
 
-                <ListItem component={Link} className='list' to='admin/register' button>
+                <ListItem component={Link} className='list' to='register' button>
                   <ListItemIcon sx={{ minWidth: '30px' }}>
                     <DoubleArrowIcon sx={{ fontSize: '0.8rem', color: 'gray' }} />
                   </ListItemIcon>
@@ -90,7 +90,7 @@ const Sidebar = () => {
                 </ListItem>
 
 
-                <ListItem button component={Link} className='list' to='admin/manageUser'>
+                <ListItem button component={Link} className='list' to='manageUser'>
                   <ListItemIcon sx={{ minWidth: '30px' }}>
                     <DoubleArrowIcon sx={{ fontSize: '0.8rem', color: 'gray' }} />
                   </ListItemIcon>

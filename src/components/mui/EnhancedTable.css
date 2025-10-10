@@ -19,3 +19,12 @@
 .edit_icon:active{
     background: var(--bs-gray-400);
 }
+
+.MuiTableCell-root{
+    padding:5px 20px !important;
+    height: 30px !important;
+    text-transform: capitalize;
+    
+
+
+}
