@@ -24,7 +24,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch(`${API_URL}/login.php`, {
+        const res = await fetch(`${API_URL}/api/login.js`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
