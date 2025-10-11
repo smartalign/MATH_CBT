@@ -191,7 +191,7 @@ const Registration = () => {
 
 
 
-        fetch(`${API_URL}/api/get_user_by_id.js?id=${id}&role=${role}`, {
+        fetch(`${API_URL}/api/get_user_by_id?id=${id}&role=${role}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             signal: controller.signal,
@@ -293,8 +293,8 @@ const Registration = () => {
 
 
         const endpoint = id
-            ? `${API_URL}/api/update_user.js?id=${id}`
-            : `${API_URL}/api/register.js`;
+            ? `${API_URL}/api/update_user?id=${id}`
+            : `${API_URL}/api/register`;
         const payload = id ? { id, ...formData } : formData;
 
         const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });

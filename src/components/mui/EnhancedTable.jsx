@@ -184,7 +184,7 @@ export default function SortingSelectingTable() {
     setLoading(true);
     setError(null);
 
-    fetch(`${API_URL}/api/get_users.js`, {
+    fetch(`${API_URL}/api/get_users`, {
       signal,
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
@@ -226,7 +226,7 @@ export default function SortingSelectingTable() {
       const ids = selectedRows.map((r) => r.id);
 
       // Send to backend
-      const response = await fetch(`${API_URL}/api/delete_multiple_users.js`, {
+      const response = await fetch(`${API_URL}/api/delete_multiple_users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -321,7 +321,7 @@ export default function SortingSelectingTable() {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
 
     try {
-      const response = await fetch(`${API_URL}/api/delete_user.js`, {
+      const response = await fetch(`${API_URL}/api/delete_user`, {
         method: "POST", // ✅ PHP reads body via POST (even if DELETE method is allowed)
         headers: {
           "Content-Type": "application/json",

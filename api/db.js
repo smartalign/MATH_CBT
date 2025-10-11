@@ -2,6 +2,7 @@ import mysql from "mysql2/promise";
 
 // Create and export a reusable function for getting a DB connection
 export async function getConnection() {
+
   const connection = await mysql.createConnection({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
