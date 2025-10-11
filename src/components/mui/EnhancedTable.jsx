@@ -186,7 +186,7 @@ export default function SortingSelectingTable() {
 
     fetch(`${API_URL}/api/get_users.js`, {
       signal,
-      method: 'POST',
+      method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
       .then((res) => {

@@ -2,7 +2,7 @@ import { getConnection } from "./db.js";
 
 export default async function handler(req, res) {
   // ✅ Allow only GET requests
-  if (req.method !== "POST") {
+  if (req.method !== "GET") {
     return res.status(405).json({ status: "error", message: "Method not allowed" });
   }
 
