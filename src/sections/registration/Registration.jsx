@@ -294,7 +294,7 @@ const Registration = () => {
 
         const endpoint = id
             ? `${API_URL}/api/update_user.js?id=${id}`
-            : `${API_URL}/api/registration.js`;
+            : `${API_URL}/api/register.js`;
         const payload = id ? { id, ...formData } : formData;
 
         const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
