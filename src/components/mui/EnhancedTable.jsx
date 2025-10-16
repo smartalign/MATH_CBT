@@ -321,19 +321,19 @@ export default function SortingSelectingTable() {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
 
     try {
-      const response = await fetch(`${API_URL}/api/delete_user`, {
-        method: "POST", // ✅ PHP reads body via POST (even if DELETE method is allowed)
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(row),
+      const response = await fetch(`${API_URL}/api/delete_users/${row.role}/${row.id}`, {
+        method: "DELETE"
       });
 
       const data = await response.json();
 
+      console.log("Deleting row:", row);
 
       if (data.status === "success") {
-        setRows((prev) => prev.filter((r) => r.id !== row.id));
+
+        // setRows((prev) => prev.filter((r) => r.id !== row.id));
+        setRows((prev) => prev.filter((r) => !(r.id === row.id && r.role === row.role)));
+
         // also update selected if needed
         setSelected((prev) => prev.filter((n) => n !== row.name));
         /*        }

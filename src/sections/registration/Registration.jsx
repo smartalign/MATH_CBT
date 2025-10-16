@@ -293,7 +293,7 @@ const Registration = () => {
 
 
         const endpoint = id
-            ? `${API_URL}/api/update_user?id=${id}`
+            ? `${API_URL}/api/update_user/${id}`
             : `${API_URL}/api/register`;
         const payload = id ? { id, ...formData } : formData;
 
