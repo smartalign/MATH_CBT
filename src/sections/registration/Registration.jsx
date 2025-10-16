@@ -26,7 +26,7 @@ const Registration = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [toggle, setToggle] = useState(false);
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', class: '', email: '', address: '', dob: '', role: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', class: '', gender: '', email: '', address: '', dob: '', role: '' });
     const ref_focus = useRef();
     const [message, setMessage] = useState('');
     const [error, setErrors] = useState({});
@@ -61,6 +61,10 @@ const Registration = () => {
 
     ];
 
+    const genderOptions = [
+        { value: "Male", label: "Male" },
+        { value: "Female", label: "Female" }
+    ]
 
     const onclick = () => {
         setName(ref_focus.current.focus())
@@ -184,7 +188,7 @@ const Registration = () => {
 
     useEffect(() => {
         if (!id) {
-            setFormData({ firstName: "", lastName: "", class: "", email: "", address: "", dob: "", role: "" });
+            setFormData({ firstName: "", lastName: "", class: "", gender: "", email: "", address: "", dob: "", role: "" });
             return;
         }
         const controller = new AbortController();
@@ -303,7 +307,7 @@ const Registration = () => {
         if (data.status === 'success') {
             alert(id ? "User updated successfully!" : "Registration successful!");
             if (!id) {
-                setFormData({ firstName: "", lastName: "", class: "", email: "", address: "", dob: "", role: "" });
+                setFormData({ firstName: "", lastName: "", class: "", gender: "", email: "", address: "", dob: "", role: "" });
             } else {
                 // go back to ManageUsers after update
                 navigate('/admin/manageUser');
@@ -416,18 +420,21 @@ const Registration = () => {
 
 
                             <div className="row ">
+
+
+
                                 <div className="inpt row_action">
                                     <div className='select_order'>
-                                        {formData.role === "student" && (
+                                        {
                                             <>
                                                 <Select
-                                                    options={classOptions}
-                                                    name="class"
+                                                    options={genderOptions}
+                                                    name="gender"
                                                     className='selectInput'
-                                                    placeholder="-- Select Class --"
+                                                    placeholder="-- Select Gender--"
                                                     menuPlacement="bottom"
-                                                    value={classOptions.find(option => option.value === formData.class) || null}
-                                                    onChange={selected => setFormData({ ...formData, class: selected.value })}
+                                                    value={genderOptions.find(option => option.value === formData.gender) || null}
+                                                    onChange={selected => setFormData({ ...formData, gender: selected.value })}
                                                     styles={{
                                                         control: (base, state) => ({
                                                             ...base,
@@ -447,7 +454,7 @@ const Registration = () => {
                                                 />
 
                                                 {/* ✅ Now error message is part of the same block */}
-                                                {error.class && (
+                                                {error.gender && (
                                                     <p
                                                         style={{
                                                             color: 'red',
@@ -457,12 +464,11 @@ const Registration = () => {
                                                             fontWeight: '500'
                                                         }}
                                                     >
-                                                        {error.class}
+                                                        {error.gender}
                                                     </p>
                                                 )}
                                             </>
-                                        )}
-
+                                        }
                                     </div>
 
 
@@ -476,15 +482,70 @@ const Registration = () => {
                                     {message}
                                 </div>
 
-                                <div className="inpt reg_notice">
-                                    <h4>Notice:</h4><br />
 
-                                    <li>To login, the default username is the combination of the first and last names while the password is the first name attached with the first four digits Eg: Joseph1234 </li>
-                                    <li>You are advised to change your password imediately after loging into your Dashboard</li>
+                                <div className="inpt rightRow ">
+                                    <div className="row_action">
+                                        <div className='select_order'>
+                                            {formData.role === "student" && (
+                                                <>
+                                                    <Select
+                                                        options={classOptions}
+                                                        name="class"
+                                                        className='selectInput'
+                                                        placeholder="-- Select Class --"
+                                                        menuPlacement="bottom"
+                                                        value={classOptions.find(option => option.value === formData.class) || null}
+                                                        onChange={selected => setFormData({ ...formData, class: selected.value })}
+                                                        styles={{
+                                                            control: (base, state) => ({
+                                                                ...base,
+                                                                height: '3.5rem',
+                                                                backgroundColor: 'white',
+                                                                borderColor: state.isFocused ? '#1976d2' : '#bebebeff',
+                                                                boxShadow: state.isFocused ? '0 0 0 .5px blue' : 'none',
+                                                                '&:hover': { borderColor: state.isFocused ? '#1976d2' : '#bebebeff' },
+                                                                borderRadius: '4px',
+                                                            }),
+                                                            placeholder: (base) => ({
+                                                                ...base,
+                                                                color: '#646464ff',
+                                                                fontStyle: 'italic',
+                                                            })
+                                                        }}
+                                                    />
+
+                                                    {/* ✅ Now error message is part of the same block */}
+                                                    {error.class && (
+                                                        <p
+                                                            style={{
+                                                                color: 'red',
+                                                                fontSize: '0.75rem',
+                                                                marginTop: '4px',
+                                                                marginLeft: '15px',
+                                                                fontWeight: '500'
+                                                            }}
+                                                        >
+                                                            {error.class}
+                                                        </p>
+                                                    )}
+                                                </>
+                                            )}
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <div className="reg_notice">
+                                        <h4>Notice:</h4><br />
+                                        <li>To login, the default username is the combination of the first and last names while the password is the first name attached with the first four digits Eg: Joseph1234 </li>
+                                        <li>You are advised to change your password imediately after loging into your Dashboard</li>
+                                    </div>
 
                                 </div>
-
-
                             </div>
 
 

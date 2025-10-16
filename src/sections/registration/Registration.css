@@ -25,6 +25,10 @@
     align-items: flex-start;
     
 }
+.rightRow{
+    display: flex;
+    flex-direction: column;
+}
 
 .inpt{
     width: 45% !important;

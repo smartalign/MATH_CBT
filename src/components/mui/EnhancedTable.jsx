@@ -64,7 +64,8 @@ function EnhancedTableHead(props) {
   const headCells = [
     { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
     { id: 'class', numeric: true, disablePadding: false, label: 'Class' },
-    { id: 'age', numeric: true, disablePadding: false, label: 'Age' },
+    { id: 'role', numeric: true, disablePadding: false, label: 'Role' },
+    { id: 'gender', numeric: true, disablePadding: false, label: 'Gender' },
     { id: 'dob', numeric: true, disablePadding: false, label: 'Date of Birth' },
     { id: 'address', numeric: true, disablePadding: false, label: 'Address' },
     { id: 'action', numeric: true, disablePadding: false, label: 'Action' },
@@ -196,6 +197,7 @@ export default function SortingSelectingTable() {
         return res.json();
       })
       .then((data) => {
+        //this is where the rows are set from my database
         setRows([...data]);
         setError(null);
       })
@@ -402,7 +404,8 @@ export default function SortingSelectingTable() {
                         {row.name}
                       </TableCell>
                       <TableCell align="right">{row.class}</TableCell>
-                      <TableCell align="right">{row.age}</TableCell>
+                      <TableCell align="right">{row.role}</TableCell>
+                      <TableCell align="right">{row.gender}</TableCell>
                       <TableCell align="right">{row.dob}</TableCell>
                       <TableCell align="right">{row.address}</TableCell>
                       <TableCell align="right">
