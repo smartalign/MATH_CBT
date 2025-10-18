@@ -1,26 +1,58 @@
 import { useState, useEffect } from 'react';
-import './AdminHome.css'
-import { Dashboard } from '@mui/icons-material';
+import './AdminHome.css';
 import Card from './../../components/card';
 import TotalStudents from '../../assets/Images/students.png';
 import TotalTeachers from '../../assets/Images/teachers.png';
 import TotalExpenditure from '../../assets/Images/naira.png';
 import Background2 from '../../components/background2';
 import Chart from "react-apexcharts";
+import { API_URL } from "../../api.js";
 
 const AdminHome = () => {
     const [username, setUsername] = useState('');
+    const [stats, setStats] = useState({
+        students: { total: 0, active: 0, inactive: 0 },
+        staff: { total: 0, active: 0, inactive: 0 },
+        gender: { male: 0, female: 0 },
+    });
 
     useEffect(() => {
         const storedUser = sessionStorage.getItem('username');
-        if (storedUser) {
-            setUsername(storedUser);
-        }
+        if (storedUser) setUsername(storedUser);
+
+        const fetchStats = async () => {
+            try {
+                const res = await fetch(`${API_URL}/api/dashboard_stats`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const data = await res.json();
+
+                if (data.status === "success") {
+                    // 🟩 Convert string numbers to actual numbers
+                    const parsedGender = {
+                        male: Number(data.data.gender.male) || 0,
+                        female: Number(data.data.gender.female) || 0,
+                    };
+
+                    setStats({
+                        ...data.data,
+                        gender: parsedGender,
+                    });
+                } else {
+                    console.error("Failed to fetch stats:", data.message);
+                }
+            } catch (err) {
+                console.error("Error fetching dashboard stats:", err);
+            }
+        };
+
+        fetchStats();
     }, []);
 
-    // Apex gender chart function begins 
+    // 🟢 Gender Chart Setup
     const studentGender = {
-        series: [50, 50],
+        series: [stats.gender.male, stats.gender.female],
         labels: ["Male", "Female"],
     };
 
@@ -29,49 +61,35 @@ const AdminHome = () => {
             type: "donut",
         },
         labels: studentGender.labels,
-        legend: {
-            position: "bottom",
-        },
+        colors: ['#008FFB', '#FF4560'],
+        legend: { position: "bottom" },
+        dataLabels: { enabled: true },
         responsive: [
             {
                 breakpoint: 480,
                 options: {
-                    chart: {
-                        width: 250,
-                    },
-                    legend: {
-                        position: "bottom",
-                    },
+                    chart: { width: 250 },
+                    legend: { position: "bottom" },
                 },
             },
         ],
     };
 
-    // finance chart begins here
-
-    const finance = {
-        series: [50, 50],
-        labels: ["Credit", "Debit"],
-    };
+    // 🟢 Finance Chart
+    const finance = { series: [50, 50], labels: ["Credit", "Debit"] };
 
     const financeChart = {
-        chart: {
-            type: "donut",
-        },
+        chart: { type: "donut" },
         labels: finance.labels,
-        legend: {
-            position: "bottom",
-        },
+        colors: ['#00E396', '#FEB019'],
+        legend: { position: "bottom" },
+        dataLabels: { enabled: true },
         responsive: [
             {
                 breakpoint: 480,
                 options: {
-                    chart: {
-                        width: 250,
-                    },
-                    legend: {
-                        position: "bottom",
-                    },
+                    chart: { width: 250 },
+                    legend: { position: "bottom" },
                 },
             },
         ],
@@ -81,8 +99,6 @@ const AdminHome = () => {
         <>
             <Background2 />
             <div className='admin_padding'>
-
-
                 <div className='contents'>
                     <div className="page_Title">
                         <h4>Admin Dashboard</h4>
@@ -91,130 +107,83 @@ const AdminHome = () => {
                                 <li>Dashboard</li>
                                 <li className='page_navigation-li'> / &nbsp; Admin Dashboard</li>
                             </ul>
-
                         </div>
                     </div>
-
-
 
                     <div className="page_welcome">
-                        <h3>Welcome  {username} to Admin dashboard</h3><br />
+                        <h3>Welcome {username} to Admin dashboard</h3>
                         <p>Have a nice day!</p>
                     </div>
-
-                    {/* 
-                    this is where my sticky setup begins
-                    <div className='test'>
-                        <div className="sticky_left">
-                            <h2>texting</h2>
-
-                        </div>
-
-                        <div className='sticky_right'>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia necessitatibus, eaque libero nobis, adipisci autem neque magnam quos dignissimos tenetur unde enim, commodi ex itaque accusamus! Perspiciatis ut omnis mollitia doloremque adipisci alias vero sint sit minima nulla. Dolorem laborum earum dolor quos vel ipsa ullam, atque magni repellat. Ex omnis aliquid dolorem id doloribus labore ad ab, fugit distinctio sunt? Qui enim itaque magni cupiditate nisi dicta, nam sequi ab accusamus similique corporis sit laudantium? Cum impedit voluptatum numquam enim quod placeat repudiandae? Molestias, sit natus officia magni, nobis voluptas, laboriosam in a consectetur voluptatum tenetur blanditiis quasi earum voluptate eum dignissimos eos quae? Alias impedit, fugit beatae asperiores libero eos quae, laboriosam hic debitis ea pariatur minima incidunt aspernatur quidem nulla fugiat ipsum! Quisquam magni tenetur asperiores quam illo, et perspiciatis? Ad atque facere libero aliquid, vitae ea dolore culpa esse nisi optio, quidem cupiditate quaerat, rerum voluptatem mollitia animi. Esse voluptas, magni fugit aperiam id optio. Iure mollitia neque perspiciatis. Aspernatur voluptas impedit, veritatis, perspiciatis explicabo culpa amet asperiores saepe magni et officiis dolor provident. Explicabo deleniti totam velit! Repellendus incidunt impedit quisquam, eveniet aliquam beatae, quidem officia mollitia fugiat, quos dolorum amet delectus similique laborum sunt.
-                        </div>
-                    </div> */}
-
-
 
                     <div className="page_components">
                         <Card className='page_components-items'>
                             <div className='border_bottom'>
-                                <div className='frame frame_bg-1'><img src={TotalStudents} alt="Students icon" /></div>
+                                <div className='frame frame_bg-1'><img src={TotalStudents} alt="Students" /></div>
                                 <div>
-                                    <h3>3654</h3>
+                                    <h3>{stats.students.total}</h3>
                                     <p>Total Students</p>
                                 </div>
                             </div>
-
                             <div className='page_component-bottom'>
-                                <div className='status'>
-                                    <p><span className='status_span'>Active : </span> 3643</p>
-                                </div>
-                                <div className='status'>
-                                    <p><span className='status_span'>Inactive : </span> 11</p>
-                                </div>
+                                <p><span className='status_span'>Active:</span> {stats.students.active}</p>
+                                <p><span className='status_span'>Inactive:</span> {stats.students.inactive}</p>
                             </div>
                         </Card>
 
                         <Card className='page_components-items'>
                             <div className='border_bottom'>
-                                <div className='frame frame_bg-2'><img src={TotalTeachers} alt="Teachers icon" /></div>
+                                <div className='frame frame_bg-2'><img src={TotalTeachers} alt="Teachers" /></div>
                                 <div>
-                                    <h3>284</h3>
-                                    <p>Total Staffs</p>
+                                    <h3>{stats.staff.total}</h3>
+                                    <p>Total Staff</p>
                                 </div>
                             </div>
-
                             <div className='page_component-bottom'>
-                                <div className='status'>
-                                    <p><span className='status_span'>Active : </span> 254</p>
-                                </div>
-                                <div className='status'>
-                                    <p><span className='status_span'>Inactive : </span> 30</p>
-                                </div>
+                                <p><span className='status_span'>Active:</span> {stats.staff.active}</p>
+                                <p><span className='status_span'>Inactive:</span> {stats.staff.inactive}</p>
                             </div>
                         </Card>
 
                         <Card className='page_components-items'>
                             <div className='border_bottom'>
-                                <div className='frame frame_bg-3'><img src={TotalExpenditure} alt="Earnings icon" /></div>
+                                <div className='frame frame_bg-3'><img src={TotalExpenditure} alt="Finance" /></div>
                                 <div>
                                     <h3>N1,350,000</h3>
                                     <p>Finance</p>
                                 </div>
                             </div>
-
                             <div className='page_component-bottom'>
-                                <div className='status'>
-                                    <p><span className='status_span'>Credit : </span> N800,000</p>
-                                </div>
-                                <div className='status'>
-                                    <p><span className='status_span'>Debit : </span> N550,000</p>
-                                </div>
+                                <p><span className='status_span'>Credit:</span> N800,000</p>
+                                <p><span className='status_span'>Debit:</span> N550,000</p>
                             </div>
                         </Card>
-
                     </div>
 
                     <div className="page_charts">
                         <div className="page_charts-items">
                             <h2>Students Gender Chart</h2>
-
-                            {/* Donut Chart */}
                             <Chart
                                 options={studentGenderChart}
                                 series={studentGender.series}
                                 type="donut"
-                                width="300"
+                                width="320"
                             />
-
                         </div>
 
                         <div className="page_charts-items">
                             <h2>Finance Chart</h2>
-
-                            {/* Donut Chart */}
                             <Chart
                                 options={financeChart}
                                 series={finance.series}
                                 type="donut"
-                                width="300"
+                                width="320"
                             />
-
                         </div>
-
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </>
-
-    )
+    );
 };
 
 export default AdminHome;

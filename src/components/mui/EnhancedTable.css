@@ -21,10 +21,24 @@
 }
 
 .MuiTableCell-root{
-    padding:5px 10px !important;
+    padding:5px !important;
     height: 30px !important;
     text-transform: capitalize;
-    
+}
 
-
+.btn_style{
+    padding: 7px 10px;
+    cursor: pointer;
+    background: green;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: .7rem;
+    text-transform: uppercase;
+}
+.btn_style:hover{
+    background: rgb(0, 196, 0);
+}
+.btn_style:active{
+    transform: translateY(4px);
 }

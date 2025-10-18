@@ -84,3 +84,7 @@
 .reg_notice li{
     list-style-type: disc;
 }
+
+.status{
+    display: none !important;
+}

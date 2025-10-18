@@ -68,6 +68,7 @@ function EnhancedTableHead(props) {
     { id: 'gender', numeric: true, disablePadding: false, label: 'Gender' },
     { id: 'dob', numeric: true, disablePadding: false, label: 'Date of Birth' },
     { id: 'address', numeric: true, disablePadding: false, label: 'Address' },
+    { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
     { id: 'action', numeric: true, disablePadding: false, label: 'Action' },
   ];
 
@@ -306,9 +307,46 @@ export default function SortingSelectingTable() {
 
   const navigate = useNavigate();
 
+  let payload;
+  //Change the current status of a user
+  const handleStatus = async (row) => {
+    if (!window.confirm("Are you sure you want to change the status of the user?")) return;
+
+    const newStatus = row.status === "ACTIVE" ? "INACTIVE" : "ACTIVE";
+    const payload = { newStatus };
+
+    try {
+      const response = await fetch(`${API_URL}/api/update_status/${row.role}/${row.status}/${row.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        alert("Status updated successfully!");
+        // ✅ Update UI instantly
+
+
+        setRows((prev) =>
+          prev.map((r) =>
+            r.id === row.id && r.role === row.role ? { ...r, status: newStatus } : r
+          )
+        );
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (err) {
+      console.error("Status error:", err);
+      alert("Failed to change status. Check console.");
+    }
+  };
+
+
   // --- Edit / Delete handlers ---
   const handleEdit = (row) => {
-    navigate(`/admin/register/${row.id}?role=${(row.role)}`);
+    navigate(`/admin/register/${row.role}/${row.id}`);
 
     // navigate(`/admin/register/${row.id}`);
     // go up one segment to /admin then to /admin/register/:id
@@ -408,6 +446,11 @@ export default function SortingSelectingTable() {
                       <TableCell align="right">{row.gender}</TableCell>
                       <TableCell align="right">{row.dob}</TableCell>
                       <TableCell align="right">{row.address}</TableCell>
+                      <TableCell align="right">
+                        <button className='btn_style' onClick={(e) => { e.stopPropagation(); handleStatus(row); }}>
+                          {row.status}
+                        </button>
+                      </TableCell>
                       <TableCell align="right">
                         <IconButton onClick={(e) => { e.stopPropagation(); handleEdit(row); }} title="Edit">
                           <EditIcon />

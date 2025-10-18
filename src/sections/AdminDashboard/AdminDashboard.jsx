@@ -19,19 +19,19 @@ const AdminDashboard = () => {
     }, [navigate]);
 
     return (
-        
-            <GlobalStateContext.Provider value={{ collapsed, setCollapsed }}>
-                <div className="dashboard-container">
-                    <Sidebar />
-                    <div  className={`main-area ${collapsed ? 'collapsed' : ''}`}>
-                        <Nav />
-                        <div className="outlet-container">
-                            <Outlet />
-                        </div>
+
+        <GlobalStateContext.Provider value={{ collapsed, setCollapsed }}>
+            <div className="dashboard-container">
+                <Sidebar />
+                <div className={`main-area ${collapsed ? 'collapsed' : ''}`}>
+                    <Nav />
+                    <div className="outlet-container">
+                        <Outlet />
                     </div>
                 </div>
-            </GlobalStateContext.Provider>
-        
+            </div>
+        </GlobalStateContext.Provider>
+
     );
 };
 export default AdminDashboard

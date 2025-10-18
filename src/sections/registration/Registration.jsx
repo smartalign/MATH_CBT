@@ -17,7 +17,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Select from 'react-select';
 
 
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
@@ -26,24 +26,25 @@ const Registration = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [toggle, setToggle] = useState(false);
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', class: '', gender: '', email: '', address: '', dob: '', role: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', class: '', gender: '', email: '', address: '', dob: '', role: '', status: 'ACTIVE' });
     const ref_focus = useRef();
     const [message, setMessage] = useState('');
     const [error, setErrors] = useState({});
 
-    const { id } = useParams(); // grabs the id if we are editing
-    const location = useLocation();
+    const { role, id } = useParams(); // grabs the id if we are editing
+    // const location = useLocation();
 
 
     const navigate = useNavigate(); // so we can optionally redirect back after update
 
     // Get ?role=student from query
-    const queryParams = new URLSearchParams(location.search);
-    const role = queryParams.get("role");
+    // const queryParams = new URLSearchParams(location.search);
+    // const role = queryParams.get("role");
 
-    console.log("Fetched ID:", id);
-    console.log("Role from query:", role);
-
+    useEffect(() => {
+        console.log("Fetched ID:", id);
+        console.log("Role from query:", role);
+    }, [id, role]);
 
 
     // react-select needs options as objects: { value, label }
@@ -77,125 +78,17 @@ const Registration = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    /*  const handleSubmit = async (e) => {
-         e.preventDefault();
-         // alert("this is working");
- 
-         let newErrors = {};
-         Object.keys(formData).forEach((key) => {
-             if (!formData[key]) {
-                 newErrors[key] = "This field is required";
-             }
-         });
- 
-         // If we have errors, stop and show them
-         if (Object.keys(newErrors).length > 0) {
-             setErrors(newErrors);
-             return;
-         }
-         setErrors({}); // clear errors if all fields valid
- 
- 
-         const res = await fetch('http://localhost/CBT-MATH-PROJECT/backend/registration.php', {
-             method: 'POST',
-             headers: { 'Content-Type': 'application/json' },
-             body: JSON.stringify(formData)
-         });
- 
-         const data = await res.json();
- 
-         setMessage(data.message);
- 
-         // console.log(data);
- 
- 
- 
-         if (data.status === "success") {
-             alert("Registration Successful!!");
-             // Reset formData
-             setFormData({
-                 firstName: "",
-                 lastName: "",
-                 class: "",
-                 email: "",
-                 address: "",
-                 dob: ""
-             });
- 
-             setMessage("");
-         }
- 
-     } */
-
-    //   useEffect(() => {
-    //       if (id) {
-    //           // 🧠 We’re editing an existing user
-    //           fetch(`http://localhost/CBT-MATH-PROJECT/backend/get_user_by_id.php?id=${id}`)
-    //               .then((res) => res.json())
-    //               .then((data) => {
-    //                   if (data && data.status === "success" && data.user) {
-    //                       const user = data.user;
-
-    //                       // 🧩 Fill formData with fetched user info
-    //                       setFormData({
-    //                           firstName: user.firstName || "",
-    //                           lastName: user.lastName || "",
-    //                           class: user.class || "",
-    //                           email: user.email || "",
-    //                           address: user.address || "",
-    //                           dob: user.dob || "",
-    //                           role: user.role || "",
-    //                       });
-    //                   }
-    //               })
-    //               .catch((err) => console.error("Error fetching user:", err));
-    //       }
-    //   }, [id]);
-
-
-
-    // ===============================
-
-    /*     useEffect(() => {
-            if (!id) return;
-            const controller = new AbortController();
-    
-            fetch(`http://localhost/cbt-math-project/backend/get_user_by_id.php?id=${id}&role=${role}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-                signal: controller.signal,
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log('Fetched user data:', data); // ✅ Debug log
-                    if (data.status === "success" && data.user) {
-                        setFormData(
-                            // data.user
-                            setFormData(prev => ({
-                                ...prev,
-                                ...data.user
-                            }))
-                        );
-        } else {
-            alert(`Something went wrong: ${data.message
-        }`);
-                    }
-                })
-                .catch((err) => console.error("Fetch error:", err));
-    
-            return () => controller.abort();
-        }, [id]); */
 
     useEffect(() => {
         if (!id) {
-            setFormData({ firstName: "", lastName: "", class: "", gender: "", email: "", address: "", dob: "", role: "" });
+            setFormData({ firstName: "", lastName: "", class: "", gender: "", email: "", address: "", dob: "", role: "", status: "ACTIVE" });
             return;
         }
         const controller = new AbortController();
 
 
 
-        fetch(`${API_URL}/api/get_user_by_id?id=${id}&role=${role}`, {
+        fetch(`${API_URL}/api/get_user_by_id/${role}/${id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             signal: controller.signal,
@@ -218,59 +111,6 @@ const Registration = () => {
         return () => controller.abort();
     }, [id, role]);
 
-
-
-
-    /*    useEffect(() => {
-           // require both id and role
-           if (!id) return;
-           const queryParams = new URLSearchParams(location.search);
-           const roleFromQuery = queryParams.get("role");
-           if (!roleFromQuery) {
-               console.error('Role missing in URL query string.');
-               return;
-           }
-   
-           const controller = new AbortController();
-           // const roleEscaped = encodeURIComponent(roleFromQuery);
-           const url = `http://localhost/cbt-math-project/backend/get_user_by_id.php?id=${id}&role=${role}`;
-
-        console.log('Fetching user at:', url); // debug
-
-    fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log('get_user_by_id response:', data);
-            if (data && data.status === "success" && data.user) {
-                // data.user is expected to be an object
-                setFormData(prev => ({
-                    // copy existing formData keys, but replace with whatever exists in user
-                    ...prev,
-                    firstName: data.user.firstName ?? data.user.firstname ?? data.user.first_name ?? data.user.username ?? '',
-                    lastName: data.user.lastName ?? data.user.lastname ?? data.user.last_name ?? '',
-                    class: data.user.class ?? data.user.userClass ?? data.user.user_class ?? '',
-                    email: data.user.email ?? '',
-                    address: data.user.address ?? '',
-                    dob: data.user.dob ?? data.user.date_of_birth ?? '',
-                    role: data.user.role ?? roleFromQuery ?? ''
-                }));
-            } else {
-                alert(`Something went wrong: ${data && data.message ? data.message : 'Unknown error'}`);
-            }
-        })
-        .catch((err) => {
-            if (err.name !== 'AbortError') console.error(err);
-        });
-
-    return () => controller.abort();
-}, [id, location.search]);
-    */
-
-    // =================================
 
 
     const handleSubmit = async (e) => {
@@ -297,9 +137,14 @@ const Registration = () => {
 
 
         const endpoint = id
-            ? `${API_URL}/api/update_user/${id}`
+            ? `${API_URL}/api/update_user/${role}/${id}`
             : `${API_URL}/api/register`;
-        const payload = id ? { id, ...formData } : formData;
+        let payload = id ? { id, ...formData } : formData;
+
+        // ✅ When updating, if user changed the role, include newRole in body
+        if (id && formData.role !== role) {
+            payload = { ...payload, newRole: formData.role };
+        }
 
         const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         const data = await res.json();
@@ -354,7 +199,7 @@ const Registration = () => {
                                 <div className='inpt'>
                                     <Select
                                         options={roleOptions}
-                                        name="class"
+                                        name="role"
                                         className='selectInput'
                                         placeholder="-- Select Role --"
                                         menuPlacement="bottom"
@@ -387,7 +232,7 @@ const Registration = () => {
                                     {/* ✅ Display error helper text if there's a validation error */}
                                     {error.role && (
                                         <p style={{ color: 'red', fontSize: '0.75rem', marginTop: '4px', marginLeft: '15px', fontWeight: '500' }}>
-                                            {error.class}
+                                            {error.role}
                                         </p>
                                     )}
 
@@ -536,6 +381,15 @@ const Registration = () => {
 
                                     </div>
 
+                                    <select
+                                        name="status"
+                                        className="status"
+                                        value={formData.status}
+                                        onChange={handelChange}
+                                    >
+                                        <option value="active">ACTIVE</option>
+                                        <option value="inactive">INACTIVE</option>
+                                    </select>
                                     <br />
                                     <br />
                                     <br />
