@@ -1,44 +1,63 @@
-.editIcon_style{
-    /* background-color: black; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius:50% ;
+.editIcon_style {
+  /* background-color: black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
-.edit_icon{
-    padding: 8px;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 2.4rem !important;
+.edit_icon {
+  padding: 8px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 2.4rem !important;
 }
-.edit_icon:hover{
-    background: var(--bs-gray-300);
-    cursor: pointer;
+.edit_icon:hover {
+  background: var(--bs-gray-300);
+  cursor: pointer;
 }
-.edit_icon:active{
-    background: var(--bs-gray-400);
-}
-
-.MuiTableCell-root{
-    padding:5px !important;
-    height: 30px !important;
-    text-transform: capitalize;
+.edit_icon:active {
+  background: var(--bs-gray-400);
 }
 
-.btn_style{
-    padding: 7px 10px;
-    cursor: pointer;
-    background: green;
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: .7rem;
-    text-transform: uppercase;
+.MuiTableCell-root {
+  padding: 5px !important;
+  height: 30px !important;
+  text-transform: capitalize;
 }
-.btn_style:hover{
-    background: rgb(0, 196, 0);
+
+.btn_style_active {
+  padding: 7px 10px;
+  cursor: pointer;
+  background: green;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
-.btn_style:active{
-    transform: translateY(4px);
+.btn_style_active:hover {
+  background: rgb(0, 196, 0);
+}
+.btn_style_active:active {
+  transform: translateY(4px);
+}
+
+
+
+.btn_style_inactive {
+  padding: 7px 10px;
+  cursor: pointer;
+  background: grey;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.btn_style_inactive:hover {
+  background: rgb(182, 182, 182);
+}
+.btn_style_inactive:active {
+  transform: translateY(4px);
 }

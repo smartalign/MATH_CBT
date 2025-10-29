@@ -154,6 +154,54 @@
     --bs-form-valid-border-color: #198754;
     --bs-form-invalid-color: #dc3545;
     --bs-form-invalid-border-color: #dc3545;
+
+
+
+    /* Main background and text colors */
+    --background: 0 0% 98%;
+    --foreground: 210 11% 15%;
+
+    /* Card component colors */
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Primary brand color - Professional teal/blue */
+    --primary: 193 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 193 70% 35%;
+
+    /* Secondary colors */
+    --secondary: 210 12% 93%;
+    --secondary-foreground: 210 11% 15%;
+
+    /* Muted colors for less emphasis */
+    --muted: 210 12% 93%;
+    --muted-foreground: 210 11% 45%;
+
+    /* Accent colors */
+    --accent: 193 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive/error colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success color for correct answers */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning color */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Border and input colors */
+    --border: 210 12% 88%;
+    --input: 210 12% 88%;
+    --ring: 193 70% 45%;
 }
 
 html{
@@ -333,3 +381,6 @@ img{
         width: var(--container-width-md);
     }
 }
+
+
+

@@ -447,7 +447,7 @@ export default function SortingSelectingTable() {
                       <TableCell align="right">{row.dob}</TableCell>
                       <TableCell align="right">{row.address}</TableCell>
                       <TableCell align="right">
-                        <button className='btn_style' onClick={(e) => { e.stopPropagation(); handleStatus(row); }}>
+                        <button className={row.status === "ACTIVE" ? "btn_style_active" : "btn_style_inactive"} onClick={(e) => { e.stopPropagation(); handleStatus(row); }}>
                           {row.status}
                         </button>
                       </TableCell>

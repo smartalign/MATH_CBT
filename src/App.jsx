@@ -11,31 +11,45 @@ import Users from './sections/AdminPages/Users.jsx';
 import Registration from './sections/registration/Registration.jsx';
 import ManageUsers from './sections/ManageUsers/ManageUsers.jsx';
 
+import { ToastProvider, useToast } from "./context/ToastContext.jsx";
+import ToastList from './components/Toast/ToastList.jsx';
+
+import AddQuestion from './sections/AddQuestion/AddQuestion.jsx';
+
 
 const App = () => {
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/Login' element={<Login />} />
-        <Route path="/student" element={<StudentDashboard />} />
-        <Route path="/parent" element={<ParentDashboard />} />
+    <ToastProvider>
+
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/parent" element={<ParentDashboard />} />
 
         //Outlet to display children routes in parent route
-        <Route path="/admin" element={<AdminDashboard />}>
-          <Route index element={<AdminHome />} />
-          {/* <Route path="users" element={<Users />} /> */}
-          <Route path="register" element={<Registration />} />
-          <Route path="register/:role/:id" element={<Registration />} /> {/* ✅ Added this because i wanted to navigate with a specific id and role for updating */}
+          <Route path="/admin" element={<AdminDashboard />}>
+            <Route index element={<AdminHome />} />
+            {/* <Route path="users" element={<Users />} /> */}
+            <Route path="register" element={<Registration />} />
+            <Route path="add_question" element={<AddQuestion />} />
 
-          <Route path="manageUser" element={<ManageUsers />} />
-          {/* <Route path="settings" element={<Settings />} /> */}
-        </Route>
+            <Route path="register/:role/:id" element={<Registration />} /> {/* ✅ Added this because i wanted to navigate with a specific id and role for updating */}
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+            <Route path="manageUser" element={<ManageUsers />} />
+            {/* <Route path="settings" element={<Settings />} /> */}
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+
+      <ToastList />
+
+
+    </ToastProvider>
 
   )
 }

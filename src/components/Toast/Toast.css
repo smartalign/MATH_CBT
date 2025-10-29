@@ -1,0 +1,133 @@
+/**
+ * TOAST STYLES
+ * Handles the appearance and animations of toast notifications
+ */
+
+/* Container for all toasts - fixed at top-right */
+.toast-container {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* Allow clicks through empty space */
+}
+
+/* Individual toast notification */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: all; /* Toast itself should receive clicks */
+  
+  /* Animation: Start off-screen to the right */
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Visible state - slides in */
+.toast-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Icon wrapper with flex centering */
+.toast-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Icon styling */
+.toast-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Message text */
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+}
+
+/* Close button */
+.toast-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: hsl(var(--muted-foreground));
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  background: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+}
+
+/* SUCCESS TOAST - Green theme */
+.toast-success {
+  border-left: 4px solid hsl(var(--success));
+}
+
+.toast-success .toast-icon {
+  color: hsl(var(--success));
+}
+
+/* ERROR TOAST - Red theme */
+.toast-error {
+  border-left: 4px solid hsl(var(--destructive));
+}
+
+.toast-error .toast-icon {
+  color: hsl(var(--destructive));
+}
+
+/* WARNING TOAST - Orange theme */
+.toast-warning {
+  border-left: 4px solid hsl(var(--warning));
+}
+
+.toast-warning .toast-icon {
+  color: hsl(var(--warning));
+}
+
+/* INFO TOAST - Blue theme */
+.toast-info {
+  border-left: 4px solid hsl(var(--primary));
+}
+
+.toast-info .toast-icon {
+  color: hsl(var(--primary));
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .toast-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+}

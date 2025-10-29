@@ -5,6 +5,8 @@ import { TextField } from '@mui/material';
 import { AppRegistrationRounded, Dashboard } from '@mui/icons-material';
 import CustomInput from '../../components/mui/CustomInput.jsx';
 import { API_URL } from "../../api.js"; // adjust path if needed
+import { useToast } from '../../context/ToastContext';
+
 
 
 // this are import for my dob
@@ -33,6 +35,8 @@ const Registration = () => {
 
     const { role, id } = useParams(); // grabs the id if we are editing
     // const location = useLocation();
+    //use toast function
+    const { showToast } = useToast();
 
 
     const navigate = useNavigate(); // so we can optionally redirect back after update
@@ -150,7 +154,9 @@ const Registration = () => {
         const data = await res.json();
 
         if (data.status === 'success') {
-            alert(id ? "User updated successfully!" : "Registration successful!");
+            id ? showToast('User updated successfully', 'success') : showToast('Registration Successfully', 'success');
+
+            // alert(id ? "User updated successfully!" : "Registration successful!");
             if (!id) {
                 setFormData({ firstName: "", lastName: "", class: "", gender: "", email: "", address: "", dob: "", role: "" });
             } else {
@@ -158,7 +164,8 @@ const Registration = () => {
                 navigate('/admin/manageUser');
             }
         } else {
-            alert("Something went wrong: " + data.message);
+            showToast('Something went wrong' + data.message, 'error')
+            // alert("Something went wrong: " + data.message);
         }
     };
 

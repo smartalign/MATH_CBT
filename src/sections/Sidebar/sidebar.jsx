@@ -123,7 +123,7 @@ const Sidebar = () => {
                 </ListItem>
 
 
-                <ListItem button className='list'>
+                <ListItem component={Link} className='list' to='add_question' button>
                   <ListItemIcon sx={{ minWidth: '30px' }}>
                     <DoubleArrowIcon sx={{ fontSize: '0.8rem', color: 'gray' }} />
                   </ListItemIcon>
