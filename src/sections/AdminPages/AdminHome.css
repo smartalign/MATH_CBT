@@ -1,5 +1,4 @@
-.admin_padding{
-    /* background-color: var( --bs-gray-200); */
+/* .admin_padding{
     height: 100vh;
     width: 100%;
     position: relative;
@@ -10,8 +9,24 @@
     width: 100% !important;
     padding: 20px;
     color: var( --bs-gray-700);
+} */
+
+.admin_padding {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 5rem; /* space for fixed navbar */
+  background-color: #f5f6fa;
+  color: var(--bs-gray-700);
+  position: relative;
 }
-.page_welcome{
+
+.contents {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+/* .page_welcome{
     padding: 15px 2rem;
     margin: 10px 0 30px;
     color: white !important;
@@ -20,8 +35,24 @@
 }
 .page_welcome h3{
     color: white;
+} */
+
+.page_welcome {
+  padding: 1.5rem 2rem;
+  margin: 10px 0 30px;
+  border-radius: var(--border-radius-3);
+  background: linear-gradient(135deg, #253544, #5c85aa , #253544);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-.page_components{
+
+.page_welcome h3, .page_welcome p {
+        color: white;
+
+  margin: 0;
+}
+
+/* .page_components{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,9 +67,32 @@
     padding: 1.5rem;
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
 
+} */
+
+.page_components {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 20px;
 }
 
-.page_charts{
+.page_components-items {
+  min-height: 6rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
+  transition: transform 0.2s ease;
+}
+.page_components h3{
+    color: var( --bs-gray-800);
+}
+.page_components-items:hover {
+  transform: translateY(-3px);
+}
+
+
+/* .page_charts{
     width: 100%;
     background-color: white;
     border-radius: var(--border-radius-3);
@@ -51,13 +105,34 @@
 
 
 .page_charts-items{
-    /* min-height: 6rem; */
-    /* width: 32%; */
+    
     width: fit-content;
     padding: 1.5rem;
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
 
+} */
+
+.page_charts {
+  width: 100%;
+  background-color: white;
+  border-radius: var(--border-radius-3);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;  /* allow wrapping */
+  padding: 1.5rem;
+  gap: 2rem;
 }
+
+.page_charts-items {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
+  padding: 1.5rem;
+}
+
 .page_charts-items h2{
     font-size: 1.5rem;
 }

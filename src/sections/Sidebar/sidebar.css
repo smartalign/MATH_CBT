@@ -3,7 +3,7 @@
 }
 
 .listItem:hover{ 
-    background:linear-gradient(to right,rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    background:linear-gradient(to right,rgba(255, 255, 255, 0.445), rgba(255, 255, 255, 0)) !important;
 }
 /* .listItemMenu{
   padding: 0 !important;
@@ -12,7 +12,7 @@
 
 .MuiListItemText-primary { 
   color: #cccccc;
-  padding: 10px;
+  padding: 10px 7px;
 }
 
 .MuiListItemText-primary:hover{
@@ -21,7 +21,7 @@
 
 .nested .MuiListItemText-primary { 
   color: #cccccc;
-  font-size: 0.9rem !important;
+  font-size: .9rem !important;
 }
 
 
@@ -34,15 +34,19 @@
   background-color: rgb(255, 255, 255);
   height: 4.7rem !important;
 }
+.logo_container_mobile{
+  background-color: rgb(255, 255, 255);
+  height: 4rem !important;
+}
 .logo_container img{
   transform:  translate(-1.5rem, 0) scale(1.1);
 }
 
 
 /* this are mui default selectors  */
-.MuiDrawer-paper{
+/* .MuiDrawer-paper{
 background-color: pink;
-}
+} */
 
 .MuiCollapse-root {
   transition: height 0.3s ease;
@@ -61,6 +65,7 @@ background-color: pink;
 
 }
 .MuiCollapse-root .MuiSvgIcon-root{
+  font-size: .8rem !important;
   margin-left: 3.5rem;
   /* margin-right: .5rem; */
 }
@@ -86,3 +91,68 @@ background-color: black;
 .MuiSvgIcon-root{
 
 } */
+/* ✅ Sidebar responsiveness */
+/* @media screen and (max-width: 992px) {
+  .MuiDrawer-paper {
+    position: fixed !important;
+    left: -240px;
+    transition: left 0.3s ease;
+    z-index: 2000;
+  }
+
+  .MuiDrawer-paper.open {
+    left: 0 !important;
+  }
+} */
+
+
+/* 🔧 Keep icon area consistent whether collapsed or not */
+.MuiListItemIcon-root {
+  min-width: 48px !important;     /* ensures consistent spacing */
+  display: flex;
+  justify-content: center;         /* center icon horizontally */
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  padding: 0 !important;
+}
+
+/* Icon appearance */
+.MuiListItemIcon-root .MuiSvgIcon-root {
+  font-size: 1.4rem;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+}
+
+.MuiListItemIcon-root .MuiSvgIcon-root:hover {
+  transform: scale(1.1);
+}
+
+/* 🧭 List item general spacing */
+.list {
+  padding: 10px 12px !important;
+  margin: 2px 0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.list:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 📘 Text inside list items */
+.MuiListItemText-primary {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #d0d0d0;
+  margin-left: 4px;
+}
+
+/* 🔹 When sidebar collapses */
+.MuiDrawer-paper {
+  transition: width 0.3s ease-in-out !important;
+}
+
+/* Keep nested collapse icons aligned */
+.MuiCollapse-root .MuiSvgIcon-root {
+  margin-left: 3.5rem !important;
+}

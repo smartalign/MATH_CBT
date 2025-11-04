@@ -188,6 +188,7 @@ const Registration = () => {
                         </div>
                     </div>
 
+
                     <div className='registeration_container'>
                         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                             <div className="row">
@@ -271,143 +272,173 @@ const Registration = () => {
                             </div>
 
 
-                            <div className="row ">
 
 
 
-                                <div className="inpt row_action">
-                                    <div className='select_order'>
-                                        {
-                                            <>
-                                                <Select
-                                                    options={genderOptions}
-                                                    name="gender"
-                                                    className='selectInput'
-                                                    placeholder="-- Select Gender--"
-                                                    menuPlacement="bottom"
-                                                    value={genderOptions.find(option => option.value === formData.gender) || null}
-                                                    onChange={selected => setFormData({ ...formData, gender: selected.value })}
-                                                    styles={{
-                                                        control: (base, state) => ({
-                                                            ...base,
-                                                            height: '3.5rem',
-                                                            backgroundColor: 'white',
-                                                            borderColor: state.isFocused ? '#1976d2' : '#bebebeff',
-                                                            boxShadow: state.isFocused ? '0 0 0 .5px blue' : 'none',
-                                                            '&:hover': { borderColor: state.isFocused ? '#1976d2' : '#bebebeff' },
-                                                            borderRadius: '4px',
-                                                        }),
-                                                        placeholder: (base) => ({
-                                                            ...base,
-                                                            color: '#646464ff',
-                                                            fontStyle: 'italic',
-                                                        })
+
+
+
+                            <div className="row">
+
+                                <div className='select_order inpt'>
+                                    {
+                                        <>
+                                            <Select
+                                                options={genderOptions}
+                                                name="gender"
+                                                className='selectInput'
+                                                placeholder="-- Select Gender--"
+                                                menuPlacement="bottom"
+                                                value={genderOptions.find(option => option.value === formData.gender) || null}
+                                                onChange={selected => setFormData({ ...formData, gender: selected.value })}
+                                                styles={{
+                                                    control: (base, state) => ({
+                                                        ...base,
+                                                        height: '3.5rem',
+                                                        backgroundColor: 'white',
+                                                        borderColor: state.isFocused ? '#1976d2' : '#bebebeff',
+                                                        boxShadow: state.isFocused ? '0 0 0 .5px blue' : 'none',
+                                                        '&:hover': { borderColor: state.isFocused ? '#1976d2' : '#bebebeff' },
+                                                        borderRadius: '4px',
+                                                    }),
+                                                    placeholder: (base) => ({
+                                                        ...base,
+                                                        color: '#646464ff',
+                                                        fontStyle: 'italic',
+                                                    })
+                                                }}
+                                            />
+
+                                            {/* ✅ Now error message is part of the same block */}
+                                            {error.gender && (
+                                                <p
+                                                    style={{
+                                                        color: 'red',
+                                                        fontSize: '0.75rem',
+                                                        marginTop: '4px',
+                                                        marginLeft: '15px',
+                                                        fontWeight: '500'
                                                     }}
-                                                />
+                                                >
+                                                    {error.gender}
+                                                </p>
+                                            )}
+                                        </>
+                                    }
+                                </div>
 
-                                                {/* ✅ Now error message is part of the same block */}
-                                                {error.gender && (
-                                                    <p
-                                                        style={{
-                                                            color: 'red',
-                                                            fontSize: '0.75rem',
-                                                            marginTop: '4px',
-                                                            marginLeft: '15px',
-                                                            fontWeight: '500'
-                                                        }}
-                                                    >
-                                                        {error.gender}
-                                                    </p>
-                                                )}
-                                            </>
-                                        }
-                                    </div>
+                                <div className='select_order inpt'>
+
+                                    {formData.role === "student" && (
+                                        <>
+                                            <Select
+                                                options={classOptions}
+                                                name="class"
+                                                className='selectInput'
+                                                placeholder="-- Select Class --"
+                                                menuPlacement="bottom"
+                                                value={classOptions.find(option => option.value === formData.class) || null}
+                                                onChange={selected => setFormData({ ...formData, class: selected.value })}
+                                                styles={{
+                                                    control: (base, state) => ({
+                                                        ...base,
+                                                        height: '3.5rem',
+                                                        backgroundColor: 'white',
+                                                        borderColor: state.isFocused ? '#1976d2' : '#bebebeff',
+                                                        boxShadow: state.isFocused ? '0 0 0 .5px blue' : 'none',
+                                                        '&:hover': { borderColor: state.isFocused ? '#1976d2' : '#bebebeff' },
+                                                        borderRadius: '4px',
+                                                    }),
+                                                    placeholder: (base) => ({
+                                                        ...base,
+                                                        color: '#646464ff',
+                                                        fontStyle: 'italic',
+                                                    })
+                                                }}
+                                            />
+
+                                            {/* ✅ Now error message is part of the same block */}
+                                            {error.class && (
+                                                <p
+                                                    style={{
+                                                        color: 'red',
+                                                        fontSize: '0.75rem',
+                                                        marginTop: '4px',
+                                                        marginLeft: '15px',
+                                                        fontWeight: '500'
+                                                    }}
+                                                >
+                                                    {error.class}
+                                                </p>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
+                            </div>
 
 
+
+                            <div className="row">
+                                <center className='inpt'>
+                                    <br />
                                     <button className="btn registration_btn">
                                         <AppRegistrationRounded className='login_icons' />
                                         {id ? 'Update' : 'Register'}
                                     </button>
+                                </center>
 
-                                    {/* <button className="btn registration_btn"><AppRegistrationRounded className='login_icons' />Register</button> */}
 
-                                    {message}
+                                <select
+                                    name="status"
+                                    className="status"
+                                    value={formData.status}
+                                    onChange={handelChange}
+                                >
+                                    <option value="active">ACTIVE</option>
+                                    <option value="inactive">INACTIVE</option>
+                                </select>
+                                <br />
+                                <br />
+                                <div className="reg_notice inpt">
+                                    <h4>Notice:</h4><br />
+                                    <li>To login, the default username is the combination of the first and last names while the password is the first name attached with the first four digits Eg: Joseph1234 </li>
+                                    <li>You are advised to change your password imediately after loging into your Dashboard</li>
                                 </div>
 
-
-                                <div className="inpt rightRow ">
-                                    <div className="row_action">
-                                        <div className='select_order'>
-                                            {formData.role === "student" && (
-                                                <>
-                                                    <Select
-                                                        options={classOptions}
-                                                        name="class"
-                                                        className='selectInput'
-                                                        placeholder="-- Select Class --"
-                                                        menuPlacement="bottom"
-                                                        value={classOptions.find(option => option.value === formData.class) || null}
-                                                        onChange={selected => setFormData({ ...formData, class: selected.value })}
-                                                        styles={{
-                                                            control: (base, state) => ({
-                                                                ...base,
-                                                                height: '3.5rem',
-                                                                backgroundColor: 'white',
-                                                                borderColor: state.isFocused ? '#1976d2' : '#bebebeff',
-                                                                boxShadow: state.isFocused ? '0 0 0 .5px blue' : 'none',
-                                                                '&:hover': { borderColor: state.isFocused ? '#1976d2' : '#bebebeff' },
-                                                                borderRadius: '4px',
-                                                            }),
-                                                            placeholder: (base) => ({
-                                                                ...base,
-                                                                color: '#646464ff',
-                                                                fontStyle: 'italic',
-                                                            })
-                                                        }}
-                                                    />
-
-                                                    {/* ✅ Now error message is part of the same block */}
-                                                    {error.class && (
-                                                        <p
-                                                            style={{
-                                                                color: 'red',
-                                                                fontSize: '0.75rem',
-                                                                marginTop: '4px',
-                                                                marginLeft: '15px',
-                                                                fontWeight: '500'
-                                                            }}
-                                                        >
-                                                            {error.class}
-                                                        </p>
-                                                    )}
-                                                </>
-                                            )}
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <select
-                                        name="status"
-                                        className="status"
-                                        value={formData.status}
-                                        onChange={handelChange}
-                                    >
-                                        <option value="active">ACTIVE</option>
-                                        <option value="inactive">INACTIVE</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <div className="reg_notice">
-                                        <h4>Notice:</h4><br />
-                                        <li>To login, the default username is the combination of the first and last names while the password is the first name attached with the first four digits Eg: Joseph1234 </li>
-                                        <li>You are advised to change your password imediately after loging into your Dashboard</li>
-                                    </div>
-
-                                </div>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -6,10 +6,10 @@ import './AdminDashboard.css';
 import { Outlet } from 'react-router-dom';
 import GlobalStateContext from '../../context/GlobalStateContext';
 
-
 const AdminDashboard = () => {
     const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false); // mobile drawer state
 
     useEffect(() => {
         const user = sessionStorage.getItem('username');
@@ -19,20 +19,22 @@ const AdminDashboard = () => {
     }, [navigate]);
 
     return (
-
         <GlobalStateContext.Provider value={{ collapsed, setCollapsed }}>
             <div className="dashboard-container">
-                <Sidebar />
+                {/* Pass mobileOpen controls to Sidebar */}
+                <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+
                 <div className={`main-area ${collapsed ? 'collapsed' : ''}`}>
-                    <Nav />
+                    {/* Pass setMobileOpen to Nav so it can toggle mobile drawer */}
+                    <Nav mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+
                     <div className="outlet-container">
                         <Outlet />
                     </div>
                 </div>
             </div>
         </GlobalStateContext.Provider>
-
     );
 };
-export default AdminDashboard
 
+export default AdminDashboard;

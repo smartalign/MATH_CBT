@@ -30,3 +30,12 @@
 .custom-input .Mui-error {
   color: red; /* Error color */
 }
+
+
+@media (max-width: 768px) {
+  .custom-input-container {
+  /* margin-bottom: 16px; */
+  width: 100%;
+}
+
+}

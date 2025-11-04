@@ -1,68 +1,157 @@
-.home_page-container{
-    display: grid;
-    height: 100vh;
-    place-items: center;
-    padding: 3rem 0;
+.home_page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
-.home_page-logo{
-    border-radius: 50%;
-    background-color: white;
-    padding: 1.5rem;
-    font-size: 2.5rem;
-    margin: 20px 0px 30px;
-    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, .4);
-    color: rgb(115, 115, 255);
+
+.home_page-logo {
+  border-radius: 50%;
+  background-color: white;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+  margin: 20px 0 30px;
+  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.4);
+  color: rgb(115, 115, 255);
 }
-.home_page-container > h1{
-    color: rgb(115, 115, 255);
-    font-size: 3rem;
-    margin-bottom: 20px;
+
+.home_page-container > h1 {
+  color: rgb(115, 115, 255);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
-.home_page-container > p{
-    text-align: center;
-    /* color: rgb(51, 51, 51); */
-    color: rgb(90, 90, 90);
-    font-size: 1.09rem;
-    width: 60%;
-    margin-bottom: 20px;
+
+.home_page-container > p {
+  color: rgb(90, 90, 90);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  line-height: 1.7;
 }
-.home_page-btn{
-    background:linear-gradient(rgb(115, 115, 255) , blue);
-    color: white;
-    margin-bottom: 20px;
-    font-size: .9rem;
+
+.home_page-btn {
+  background: linear-gradient(rgb(115, 115, 255), blue);
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 2.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
+  transition: all 0.3s ease;
 }
-.home_page-btn:hover{
-    color: white;
-    background:linear-gradient(blue, rgb(115, 115, 255));
+
+.home_page-btn:hover {
+  background: linear-gradient(blue, rgb(115, 115, 255));
+  transform: translateY(-3px);
 }
-.infoWrap{
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr;  */
-    width: 90%; 
-    display: flex;
-    gap: 1rem; 
+
+.infoWrap {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
-.infoDiv{
-    display: flex;
+
+.infoDiv {
+  flex: 1 1 300px;
+  max-width: 350px;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.infoDiv:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 255, 0.1);
+}
+
+.home_page-icons {
+  color: rgb(4, 204, 4);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.infoDiv h5 {
+  font-size: 1.1rem;
+  color: rgb(51, 51, 51);
+}
+
+.infoDiv p {
+  margin-top: 0.7rem;
+  color: rgb(80, 80, 80);
+  font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVENESS ===== */
+
+@media screen and (max-width: 1024px) {
+  .home_page-container > h1 {
+    font-size: 2.4rem;
+  }
+
+  .home_page-container > p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .infoWrap {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home_page-container {
+    padding: 3rem 1rem;
+  }
+
+  .home_page-container > h1 {
+    font-size: 2rem;
+  }
+
+  .infoDiv {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home_page-container > h1 {
+    font-size: 1.8rem;
+  }
+
+  .home_page-container > p {
+    font-size: 0.95rem;
+  }
+
+  .home_page-btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+  }
+
+  .infoWrap {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
-    text-align: center;
-    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, .4);
-}
-.home_page-icons{
-    color: rgb(4, 204, 4);
-    /* font-size: 30rem !important; */
-    width: 2rem;
-    height: 2rem;
-    margin-bottom: 20px;
-}
-.infoDiv h5{
-    font-size: 1.009rem;
-    color: rgb(51, 51, 51);
-}
-.infoDiv p{
-    margin-top: 10px;
-    color: rgb(51, 51, 51);
+  }
+
+  .infoDiv {
+    width: 90%;
+  }
 }

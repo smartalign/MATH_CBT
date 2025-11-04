@@ -1,12 +1,12 @@
 import React from 'react'
 import './card.css'
 
-const card = ({children, className, onclick}) => {
+const Card = ({ children, className = '', onClick }) => {
   return (
-    <article className={`card ${className}`} onClick={onclick}>
-        {children}
+    <article className={`card ${className}`} onClick={onClick}>
+      {children}
     </article>
   )
 }
 
-export default card
+export default Card

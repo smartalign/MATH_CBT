@@ -1,8 +1,5 @@
-.padding{
-    /* display: grid;
-    place-items: center;
-     */
- position: relative;
+/* .padding{
+     position: relative;
 }
 .registeration_container{
     position: absolute;
@@ -16,23 +13,63 @@
     padding: 2rem;
     padding-bottom: 0px;
     background-color: white;
+} */
+
+.padding {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 6rem; /* space for navbar */
 }
-.row{
+
+.registeration_container {
+  width: 95%;
+  max-width: 900px;
+  position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+  background: white;
+  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, .2);
+  border-radius: var(--border-radius-2);
+  padding: 2rem 2.5rem;
+  margin-bottom: 4rem;
+}
+
+/* .row{
     width: 100% !important;
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     
+} */
+
+ .row {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* allow wrapping */
+  gap: 1.2rem;
 }
+
+/* .inpt {
+  flex: 1;
+  min-width: 280px;
+} */
+
 .rightRow{
     display: flex;
     flex-direction: column;
 }
 
 .inpt{
-    width: 45% !important;
-    /* height: 100%; */
+    width: 45%;
+
 }
 .selectInput{
     max-height: 4rem;
@@ -60,6 +97,8 @@
 
 .dob-input{
     height: 3.5rem;
+    margin-bottom: 1.5rem !important;
+
 }
 
 .dob-input .MuiFormHelperText-root {
@@ -74,7 +113,7 @@
     flex-direction: column;
     gap: 2rem;
 }
-.reg_notice{
+/* .reg_notice{
     padding: 20px 30px;
     color: grey;
     border: 1px dashed red;
@@ -83,8 +122,60 @@
 }
 .reg_notice li{
     list-style-type: disc;
+} */
+
+.reg_notice {
+  padding: 1rem 1.2rem;
+  color: #555;
+  border: 1px dashed #d9534f;
+  border-radius: var(--border-radius-2);
+  background: #fff8f8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.reg_notice h4 {
+  color: #c9302c;
+  margin-bottom: 0.3rem;
+}
+
+.reg_notice li {
+  margin-bottom: 0.6rem;
 }
 
 .status{
     display: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .registeration_container {
+    padding: 1.5rem;
+  }
+  
+  .registration_btn {
+    width: 75%;
+    padding: 1rem;
+
+  }
+
+  .app-title {
+    font-size: 1.2rem;
+  }
+  .row {
+    flex-direction: column;
+    /* width: 100%; */
+    align-items: stretch;
+  }
+
+  .inpt {
+    width: 100% !important;
+  }
+
+
+  .row_order{
+    display: flex;
+    /* background-color: black; */
+    flex-direction: column-reverse;
+  }
 }

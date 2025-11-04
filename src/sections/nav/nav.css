@@ -1,38 +1,110 @@
+/* Base navbar styles */
 .navbar {
   position: fixed;
-  /* height: 60px; */
-  height: 4.7rem !important;
-  background-color: white;
+  top: 0;
+  left: 0;
+  height: 4.7rem;
+  width: 100%;
+  background-color: #fff;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  z-index: 1000;
-  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, .2);
-
-  /* margin-left: 200px; Offset for sidebar */
-}
-
-
-
-.navbar-content {
-  display: flex;
   justify-content: space-between;
-  /* width: 100%; */
-  align-items: center;
+  padding: 0 1rem;
+  z-index: 1300;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
 }
 
+/* Left side (menu + title) */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* App title */
+.app-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2f4255;
+  white-space: nowrap;
+}
+
+/* Right side (profile) */
 .profile-section {
   display: flex;
-  /* width: 40%; */
-  margin-left: auto ;
-  margin-right: 20px;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.6rem;
+  margin-left: auto;
 }
 
 .profile-img {
   width: 40px;
-  height: 40bpx;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.profile-name {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+
+.menu-btn_mobile svg {
+  color: red !important; /* or any visible color */
+}
+
+.menu-btn svg {
+  color: #2f4255 !important; /* or any visible color */
+}
+
+
+/* 🖥️ Desktop view */
+@media (min-width: 993px) {
+  .navbar {
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+
+  .navbar.collapsed {
+    left: 64px;
+    width: calc(100% - 64px);
+  }
+}
+
+/* 📱 Mobile view */
+@media (max-width: 992px) {
+  .navbar {
+    left: 0;
+    width: 100%;
+    padding: 0 0.75rem;
+    overflow: hidden;
+  }
+
+  .app-title {
+    display: none;
+  }
+
+  .profile-name {
+    display: none;
+  }
+
+  .menu-btn {
+    margin-left: -6px;
+  }
+
+  body {
+    overflow-x: hidden !important;
+  }
+}
+
+/* Small fix for very small devices */
+@media (max-width: 480px) {
+  .profile-img {
+    width: 36px;
+    height: 36px;
+  }
 }
