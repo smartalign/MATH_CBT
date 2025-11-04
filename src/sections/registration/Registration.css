@@ -16,6 +16,7 @@
 } */
 
 .padding {
+  position:relative;
   width: 100%;
   min-height: 100vh;
   background: #f5f6fa;
@@ -23,6 +24,18 @@
   justify-content: center;
   align-items: flex-start;
   padding-top: 6rem; /* space for navbar */
+}
+/* .page_Title{
+  position: absolute;
+  padding-top: 5rem; /* space for fixed navbar */
+
+ .contents {
+  position: absolute;
+  top: 5rem;
+  /* left: 17rem; */
+  width: 50%;
+  padding: 20px;
+  color: var(--bs-gray-700);
 }
 
 .registeration_container {
